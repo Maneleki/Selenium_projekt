@@ -4,7 +4,7 @@ class SydsvenskanResult:
 
     # LOCATORS
 
-    RESULT_LINKS = (By.CLASS_NAME, "prose-title")
+    RESULT_ARTICLES = (By.CLASS_NAME, "prose-title")
     SEARCH_INPUT = (By.ID, "search-input")
 
     # INITIALIZER
@@ -14,9 +14,9 @@ class SydsvenskanResult:
 
     # INTERACTION METHODS
 
-    def result_link_titles(self):
-        links = self.browser.find_elements(*self.RESULT_LINKS)
-        titles = [link.text for link in links]
+    def result_articles_content(self):
+        articles = self.browser.find_elements(*self.RESULT_ARTICLES)
+        titles = [article.text for article in articles]
         return titles
 
     def search_input_value(self):
