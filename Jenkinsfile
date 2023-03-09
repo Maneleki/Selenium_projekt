@@ -4,8 +4,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                bat 'python --version'
+                sh 'python --version'
             }
         }
+        stage('tests Python Env') {
+            withPythonEnv('python3') {
+                sh 'pip install pytest'
+                sh 'pytest tests/test.py'
+            }
     }
 }
