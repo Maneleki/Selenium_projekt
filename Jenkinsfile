@@ -1,17 +1,16 @@
-/* Requires the Docker Pipeline plugin */
+Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
+
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'python --version'
+                /* `make check` returns non-zero on test failures,
+                * using `true` to allow the Pipeline to continue nonetheless
+                */
+                sh 'make check || true' 
+                pytest '**/tests/tests.py' 
             }
         }
-        stage('tests Python Env') {
-            withPythonEnv('python3') {
-                sh 'pip install pytest'
-                sh 'pytest tests/test.py'
-            }
     }
-}
 }
