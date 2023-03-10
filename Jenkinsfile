@@ -2,11 +2,15 @@
 pipeline {
     agent any
 
-    stages {
+    stages { 
+        stage('build') {
+            steps {
+                sh 'git clone https://github.com/Maneleki/Selenium_projekt.git'
+            }
+        }
         stage('Test') {
             steps {
-
-                sh 'pytest tests/test.py'
+                sh 'python3 -m pytest tests/test.py'
             }
         }
     }
