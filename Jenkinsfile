@@ -10,7 +10,7 @@ pipeline {
                 sh 'git --version'
             }
         }
-        stage('Check code) {
+        stage('Check code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Maneleki/Selenium_projekt.git'
             }
